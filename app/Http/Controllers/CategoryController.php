@@ -23,8 +23,10 @@ class CategoryController extends Controller
     public function create(Request $request)
     {
         $data = $request->validate([
+            'user_id' => ['required', 'exists:users,id'],
             'name' => ['required', 'max:255']
         ]);
+        // dd($request->all());
         Category::create($data);
         // return response()->json($request->all());
     }

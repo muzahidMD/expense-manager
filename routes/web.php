@@ -7,5 +7,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/index', [CategoryController::class, 'index']);
-Route::post('/create', [CategoryController::class, 'create']);
+Route::get('/category', [CategoryController::class, 'index']);
+Route::post('/category/create', [CategoryController::class, 'create']);
