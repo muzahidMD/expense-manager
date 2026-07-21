@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 
@@ -49,15 +50,6 @@ Route::get('/bar-chart', function () {
 })->name('bar-chart');
 
 
-// authentication pages
-Route::get('/signin', function () {
-    return view('pages.auth.signin', ['title' => 'Sign In']);
-})->name('signin');
-
-Route::get('/signup', function () {
-    return view('pages.auth.signup', ['title' => 'Sign Up']);
-})->name('signup');
-
 // ui elements pages
 Route::get('/alerts', function () {
     return view('pages.ui-elements.alerts', ['title' => 'Alerts']);
@@ -85,22 +77,7 @@ Route::get('/videos', function () {
 
 
 
+// authentication pages
+Route::get('/login', [AuthController::class, 'showLogin'])->name('signin');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Route::get('/register', [AuthController::class, 'showRegister'])->name('signup');
