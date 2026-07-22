@@ -3,11 +3,7 @@
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
-
-// dashboard pages
-Route::get('/', function () {
-    return view('pages.dashboard.ecommerce', ['title' => 'E-commerce Dashboard']);
-})->name('dashboard');
+use Illuminate\Support\Facades\Auth;
 
 // calender pages
 Route::get('/calendar', function () {
@@ -76,8 +72,17 @@ Route::get('/videos', function () {
 })->name('videos');
 
 
-
 // authentication pages
-Route::get('/login', [AuthController::class, 'showLogin'])->name('signin');
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+    Route::post('/login', [AuthController::class, 'login'])->name('login.store');
 
-Route::get('/register', [AuthController::class, 'showRegister'])->name('signup');
+    Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
+    Route::post('/register', [AuthController::class, 'register'])->name('register.store');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+});
