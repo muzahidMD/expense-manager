@@ -25,14 +25,16 @@ class AuthController extends Controller
     {
         $data = $request->validated();
 
-        User::create([
+        $user = User::create([
             'fname' => $data['fname'],
             'lname' => $data['lname'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password'])
+            'password' => $data['password']
         ]);
 
-        return redirect()->route('login');
+        Auth::login($user);
+
+        return redirect()->route('dashboard');
     }
 
     public function login(LoginRequest $request)
@@ -41,7 +43,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($data)) {
             $request->session()->regenerate();
-            return redirect()->intended();
+            return redirect()->intended('/');
         }
 
         return back()->withErrors([

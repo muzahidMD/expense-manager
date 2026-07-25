@@ -1,3 +1,7 @@
+@php
+    $user = auth()->user();
+@endphp
+
 <div class="relative" x-data="{
     dropdownOpen: false,
     toggleDropdown() {
@@ -13,7 +17,7 @@
             <img src="/images/user/owner.png" alt="User" />
         </span>
 
-        <span class="block mr-1 font-medium text-theme-sm">Musharof</span>
+        <span class="block mr-1 font-medium text-theme-sm">{{ $user->full_name }}</span>
 
         <!-- Chevron Icon -->
         <svg class="w-5 h-5 transition-transform duration-200" :class="{ 'rotate-180': dropdownOpen }" fill="none"
@@ -31,8 +35,10 @@
         style="display: none;">
         <!-- User Info -->
         <div>
-            <span class="block font-medium text-gray-700 text-theme-sm dark:text-gray-400">Musharof Chowdhury</span>
-            <span class="mt-0.5 block text-theme-xs text-gray-500 dark:text-gray-400">randomuser@pimjo.com</span>
+            <p class="block font-medium text-gray-700 text-theme-sm dark:text-gray-400">
+                {{ $user->full_name }}
+            </p>
+            <span class="mt-0.5 block text-theme-xs text-gray-500 dark:text-gray-400">{{ $user->email }}</span>
         </div>
 
         <!-- Menu Items -->

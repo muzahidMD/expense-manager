@@ -5,7 +5,7 @@
         <div class="relative flex h-screen w-full flex-col justify-center sm:p-0 lg:flex-row dark:bg-gray-900">
             <!-- Form -->
             <div class="flex w-full flex-1 flex-col lg:w-1/2">
-                <div class="mx-auto w-full max-w-md pt-10">
+                {{-- <div class="mx-auto w-full max-w-md pt-10">
                     <a href="/"
                         class="inline-flex items-center text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
                         <svg class="stroke-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -15,7 +15,7 @@
                         </svg>
                         Back to dashboard
                     </a>
-                </div>
+                </div> --}}
                 <div class="mx-auto flex w-full max-w-md flex-1 flex-col justify-center">
                     <div>
                         <div class="mb-5 sm:mb-8">
@@ -27,7 +27,7 @@
                             </p>
                         </div>
                         <div>
-                            <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5">
+                            {{-- <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5">
                                 <button
                                     class="inline-flex items-center justify-center gap-3 rounded-lg bg-gray-100 px-7 py-3 text-sm font-normal text-gray-700 transition-colors hover:bg-gray-200 hover:text-gray-800 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
@@ -65,7 +65,7 @@
                                 <div class="relative flex justify-center text-sm">
                                     <span class="bg-white p-2 text-gray-400 sm:px-5 sm:py-2 dark:bg-gray-900">Or</span>
                                 </div>
-                            </div>
+                            </div> --}}
                             <form accept="{{ route('login.store') }}" method="POST">
                                 @csrf
                                 <div class="space-y-5">
@@ -153,7 +153,8 @@
                             <div class="mt-5">
                                 <p class="text-center text-sm font-normal text-gray-700 sm:text-start dark:text-gray-400">
                                     Don't have an account?
-                                    <a href="/signup" class="text-brand-500 hover:text-brand-600 dark:text-brand-400">Sign
+                                    <a href="/register"
+                                        class="text-brand-500 hover:text-brand-600 dark:text-brand-400">Sign
                                         Up</a>
                                 </p>
                             </div>
