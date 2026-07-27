@@ -14,7 +14,7 @@ class UserController extends Controller
     {
         $users = User::select(['id', 'fname', 'lname', 'email'])->get();
 
-        return view('admin.users', compact('users'));
+        return view('admin.user.index', compact('users'));
     }
 
     /**

@@ -47,6 +47,17 @@
   --color-white: #ffffff;
   --color-black: #101828;
 
+  --color-primary-50: #e6f8f4;
+  --color-primary-100: #b0e9de;
+  --color-primary-200: #8adece;
+  --color-primary-300: #54cfb8;
+  --color-primary-400: #33c5aa;
+  --color-primary-500: #00b795;
+  --color-primary-600: #00a788;
+  --color-primary-700: #00826a;
+  --color-primary-800: #006552;
+  --color-primary-900: #004d3f;
+
   --color-brand-25: #f2f7ff;
   --color-brand-50: #ecf3ff;
   --color-brand-100: #dde9ff;
@@ -879,4 +890,9 @@ pre[class*='language-'] {
   .flatpickr-calendar.static {
     margin-right: -60px !important;
   }
+}
+
+.form label .mandatory {
+  --tw-text-opacity: 1;
+  color: rgb(255 0 0 / var(--tw-text-opacity, 1));
 }
