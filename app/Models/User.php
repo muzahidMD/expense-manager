@@ -36,13 +36,6 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    protected function fullName(): Attribute
-    {
-        return Attribute::make(
-            get: fn() => trim("{$this->fname} {$this->lname}")
-        );
-    }
-
     /**
      * Get the attributes that should be cast.
      *

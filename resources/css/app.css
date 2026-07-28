@@ -892,7 +892,7 @@ pre[class*='language-'] {
   }
 }
 
-.form label .mandatory {
+form label .mandatory {
   --tw-text-opacity: 1;
   color: rgb(255 0 0 / var(--tw-text-opacity, 1));
 }

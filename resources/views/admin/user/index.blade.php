@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', '')
+@section('title', 'User Management')
 
 @section('content')
     <x-common.page-breadcrumb pageTitle="User Management" />
@@ -42,8 +42,18 @@
             </div> --}}
 
         {{-- new table --}}
+
+        <div class="flex justify-end items-center align-middle mb-4">
+            <div class="flex flex-row gap-x-2.5">
+                <a class="text-white hover:text-white" href="{{ {{ route('user.create') }} }}">
+                    <x-ui.button class="bg-primary-300 hover:bg-primary-600"> Add User </x-ui.button>
+                </a>
+            </div>
+        </div>
         <div
             class="text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
+
+
             <div class="w-full overflow-x-auto">
                 <table class="w-full min-w-max">
                     <thead class="bg-gray-50 dark:bg-gray-700/50">
@@ -55,7 +65,6 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y-2 divide-gray-200 dark:divide-gray-700">
-                        {{-- @dd($users) --}}
                         @foreach ($users as $user)
                             <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50">
                                 {{-- <td class="px-6 py-5 font-medium">
@@ -64,21 +73,20 @@
                                 <td class="py-3">
                                     <div class="flex items-center gap-[18px]">
                                         <div class="w-10 h-10 overflow-hidden rounded-full">
-                                            {{-- <img src="{{ $campaign['creator']['imageUrl'] }}"
-                                                alt="{{ $campaign['creator']['name'] }}" /> --}}
+                                            <img src="{{ asset('/images/user/user-default.png') }}" alt="" />
                                         </div>
                                         <div>
-                                            {{-- <p class="text-gray-700 text-theme-sm dark:text-gray-400">
-                                                {{ $campaign['creator']['name'] }}
-                                            </p> --}}
+                                            <p class="text-gray-700 text-theme-sm dark:text-gray-400">
+                                                {{ $user->name }}
+                                            </p>
                                         </div>
                                     </div>
                                 </td>
                                 <td class="px-6 py-5">
-                                    <p>{{ $user->full_name }}</p>
+                                    <p>{{ $user->email }}</p>
                                 </td>
                                 <td class="px-6 py-5">
-                                    <p>{{ $user->email }}</p>
+                                    {{-- <p>{{ $user-> }}</p> --}}
                                 </td>
                                 <td class="px-6 py-5">
                                     <div class="flex gap-4">
@@ -104,6 +112,7 @@
                         @endforeach
                     </tbody>
                 </table>
+
             </div>
         </div>
         {{-- new table --}}

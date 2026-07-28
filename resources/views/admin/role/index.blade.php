@@ -67,7 +67,7 @@
                                     <p>{{ $loop->iteration }}</p>
                                 </td> --}}
                                 <td class="px-6 py-5">
-                                    <p>{{ $user->full_name }}</p>
+                                    <p>{{ $user->name }}</p>
                                 </td>
                                 <td class="px-6 py-5">
                                     <p>{{ $user->email }}</p>

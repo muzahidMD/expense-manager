@@ -12,7 +12,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::select(['id', 'fname', 'lname', 'email'])->get();
+        $users = User::select(['id', 'name', 'email'])->get();
+        // dd($users);
 
         return view('admin.user.index', compact('users'));
     }
@@ -22,7 +23,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
