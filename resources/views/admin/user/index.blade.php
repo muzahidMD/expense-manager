@@ -45,7 +45,7 @@
 
         <div class="flex justify-end items-center align-middle mb-4">
             <div class="flex flex-row gap-x-2.5">
-                <a class="text-white hover:text-white" href="{{ {{ route('user.create') }} }}">
+                <a class="text-white hover:text-white" href="{{ route('user.create') }}">
                     <x-ui.button class="bg-primary-300 hover:bg-primary-600"> Add User </x-ui.button>
                 </a>
             </div>

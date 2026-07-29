@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RolePermissionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 
@@ -87,7 +88,12 @@ Route::middleware('auth')->group(function () {
 
     // logout
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-});
 
-Route::get('/users', [UserController::class, 'index'])->name('user');
-Route::get('/users/create', [UserController::class, 'create'])->name('user.create');
+
+
+    Route::get('/users', [UserController::class, 'index'])->name('user');
+    Route::get('/users/create', [UserController::class, 'create'])->name('user.create');
+
+
+    Route::get('/roles', [RolePermissionController::class, 'showRole'])->name('role');
+});

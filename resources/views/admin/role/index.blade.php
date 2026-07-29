@@ -1,8 +1,8 @@
 @extends('layouts.app')
-@section('title', '')
+@section('title', 'User Management')
 
 @section('content')
-
+    <x-common.page-breadcrumb pageTitle="User Management" />
     @if (session('success'))
         <div id="successAlert"
             class="flex items-center justify-between p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg" role="alert">
@@ -13,10 +13,6 @@
             </button>
         </div>
     @endif
-
-    <div class="flex justify-between mb-3">
-        <h1 class="text-base lg:text-xl font-bold text-gray-800 dark:text-white/90 mb-4">Users</h1>
-    </div>
 
     <div>
         {{-- @if (count($applications) == 0)
@@ -46,37 +42,39 @@
             </div> --}}
 
         {{-- new table --}}
+
+        <div class="flex justify-end items-center align-middle mb-4">
+            <div class="flex flex-row gap-x-2.5">
+                <a class="text-white hover:text-white" href="{{ route('user.create') }}">
+                    <x-ui.button class="bg-primary-300 hover:bg-primary-600"> Add Role </x-ui.button>
+                </a>
+            </div>
+        </div>
         <div
             class="text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
+
+
             <div class="w-full overflow-x-auto">
                 <table class="w-full min-w-max">
                     <thead class="bg-gray-50 dark:bg-gray-700/50">
                         <tr>
-                            <th class="px-6 py-4 text-left">User</th>
-                            <th class="px-6 py-4 text-left">Email</th>
+                            <th class="px-6 py-4 text-left">No</th>
+                            <th class="px-6 py-4 text-left">Role Name</th>
                             <th class="px-6 py-4 text-left">Role</th>
-                            <th class="px-6 py-4 text-left">Permission</th>
                             <th class="px-6 py-4 text-left">Action</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y-2 divide-gray-200 dark:divide-gray-700">
-                        {{-- @dd($users) --}}
-                        @foreach ($users as $user)
+                        @foreach ($roles as $role)
                             <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50">
-                                {{-- <td class="px-6 py-5 font-medium">
+                                <td class="px-6 py-5 font-medium">
                                     <p>{{ $loop->iteration }}</p>
-                                </td> --}}
-                                <td class="px-6 py-5">
-                                    <p>{{ $user->name }}</p>
                                 </td>
                                 <td class="px-6 py-5">
-                                    <p>{{ $user->email }}</p>
+                                    <p>{{ $role->name }}</p>
                                 </td>
                                 <td class="px-6 py-5">
-
-                                </td>
-                                <td class="px-6 py-5">
-
+                                    {{-- <p>{{ $user-> }}</p> --}}
                                 </td>
                                 <td class="px-6 py-5">
                                     <div class="flex gap-4">
@@ -88,8 +86,12 @@
                                                     fill="" />
                                             </svg>
                                         </button>
-                                        <button>
-                                            <i class="fas fa-trash"></i>
+                                        <button @click="deleteRow(row.id)">
+                                            <svg class="text-gray-700 cursor-pointer size-5 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-500"
+                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                            </svg>
                                         </button>
                                     </div>
                                 </td>
@@ -98,6 +100,7 @@
                         @endforeach
                     </tbody>
                 </table>
+
             </div>
         </div>
         {{-- new table --}}
