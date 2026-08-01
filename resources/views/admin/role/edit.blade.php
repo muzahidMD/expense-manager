@@ -1,0 +1,56 @@
+@extends('layouts.app')
+@section('title', 'Edit Role')
+
+@section('content')
+    <x-common.component-card title="Edit Role" class="max-w-3xl mx-auto">
+
+        {{-- <form action="{{ route('roles.update', $role->id) }}" method="POST"> --}}
+        <form action="" method="POST">
+            @csrf
+            @method('PATCH')
+
+            <div class="grid grid-cols-1 gap-6">
+
+                <div>
+                    <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+                        Role Name <span class="text-red-500">*</span>
+                    </label>
+
+                    <input type="text" name="name" value="{{ old('name', $role->name) }}"
+                        class="h-11 w-full rounded-lg border border-gray-300 px-4 text-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-200 dark:bg-gray-900 dark:border-gray-700 dark:text-white" />
+
+                    @error('name')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div>
+                    <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-400">
+                        Permissions
+                    </label>
+
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                        @foreach ($permissions as $permission)
+                            <label class="flex items-center gap-2">
+                                <input type="checkbox" name="permissions[]" value="{{ $permission->name }}"
+                                    class="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
+                                    {{ in_array($permission->name, old('permissions', $rolePermissions)) ? 'checked' : '' }}>
+                                <span class="text-sm text-gray-700 dark:text-gray-300">
+                                    {{ $permission->name }}
+                                </span>
+                            </label>
+                        @endforeach
+                    </div>
+                </div>
+
+                <div class="flex justify-end mt-6">
+                    <x-ui.button type="submit" class="bg-primary-300 hover:bg-primary-600">
+                        Update Role
+                    </x-ui.button>
+                </div>
+
+            </div>
+        </form>
+
+    </x-common.component-card>
+@endsection
