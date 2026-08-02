@@ -2,7 +2,7 @@
 @section('title', 'Add Role')
 
 @section('content')
-    <x-common.component-card title="Add Role" class="max-w-3xl mx-auto">
+    <x-common.component-card title="Add Role" class="max-w-5xl mx-auto">
 
         <form action="{{ route('roles.store') }}" method="POST">
             @csrf
@@ -14,8 +14,7 @@
                         Role Name <span class="text-red-500">*</span>
                     </label>
 
-                    <input type="text" name="name" value="{{ old('name') }}"
-                        placeholder="Enter role name"
+                    <input type="text" name="name" value="{{ old('name') }}" placeholder="Enter role name"
                         class="h-11 w-full rounded-lg border border-gray-300 px-4 text-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-200 dark:bg-gray-900 dark:border-gray-700 dark:text-white" />
 
                     @error('name')
@@ -28,17 +27,18 @@
                         Permissions
                     </label>
 
-                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                    <div class="grid grid-cols-2 md:grid-cols-4  gap-3">
                         @foreach ($permissions as $permission)
-                            <label class="flex items-center gap-2">
-                                <input type="checkbox" name="permissions[]"
-                                    value="{{ $permission->name }}"
+                            <div class="flex items-center gap-2">
+                                <input type="checkbox" id="permission{{ $permission->id }}" name="permissions[]"
+                                    value="{{ $permission->id }}"
                                     class="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
                                     {{ in_array($permission->name, old('permissions', [])) ? 'checked' : '' }}>
-                                <span class="text-sm text-gray-700 dark:text-gray-300">
+                                <label for="permission{{ $permission->id }}"
+                                    class="text-sm text-gray-700 dark:text-gray-300">
                                     {{ $permission->name }}
-                                </span>
-                            </label>
+                                </label>
+                            </div>
                         @endforeach
                     </div>
                 </div>
