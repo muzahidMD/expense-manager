@@ -15,7 +15,7 @@
                     <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
                         Role Name <span class="text-red-500">*</span>
                     </label>
-
+                    {{-- @dd($role) --}}
                     <input type="text" name="name" value="{{ old('name', $role->name) }}"
                         class="h-11 w-full rounded-lg border border-gray-300 px-4 text-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-200 dark:bg-gray-900 dark:border-gray-700 dark:text-white" />
 

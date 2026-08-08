@@ -42,8 +42,9 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                        {{-- @dd($roles->permissions->name ) --}}
+
                         @forelse ($roles as $role)
+                            {{-- @dd($role) --}}
                             <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/40 transition">
                                 <td class="px-6 py-4 font-medium text-gray-700 dark:text-gray-300">
                                     {{ $loop->iteration }}
